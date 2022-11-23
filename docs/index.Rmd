@@ -1,45 +1,83 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Inequalities in the Incarceration System"
+author: "Cecelia Thomas"
+date: '2022-11-21'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
-source("../source/a4-helpers.R")
+```{r setup, include=FALSE}
 source("../source/analysis.R")
+knitr::opts_chunk$set(echo = TRUE)
 ```
+
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+  This report summarizes and illustrates inequalities within the United States incarceration system. People of color, predominately black men, experience more, unjust, arrests and sentences
+due to over targeting and policing, all built on the foundation of systemic racism within the United States. This project highlights this over-criminalization through examining incarceration rates in the US throughout the years of 1970-2018.
 
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
 
 ## Introduction 
-[TODO]
+  The Incarceration Trends data set provided by the Vera Institute contains valuable information regarding incarceration rates over the past 49 years based on gender, age, and race. The data set further organizes this information by state, as well as counties, including population count in each area as well. The examination and understanding of incarceration rates in the United States is extremely important to recognize inequalities people of color experience and have been experiencing for hundreds of years. America’s incarceration system ultimately perpetuates disparities between races, maintaining longstanding disparate outcomes for black people. Black people in the US overall are more likely to be killed by law enforcement and be targeted by over policing. In turn, these individuals face harsher sentencings, and are more likely to be detained pretrial, meaning they are being held while still being legally innocent. Further, regardless of race, those coming from low SES backgrounds have a much harder time getting back on their feet after incarceration due to LFO's, legal financial obligations. Overall, America’s incarceration system disproportionately impacts people of color. 
+
 
 ## Data Summary 
-[TODO]
+### Variable 1:
+  Population proportions and jail proportions by race in each state were calculated to examine the difference between the population of a race in a particular state and the population of that race being incarcerated. The five groups that were examined in this data set were White, Black, Asian and Pacific Islander, Latinx, and Native American.
+  
+  
+  For each group, the jail proportion was subtracted from the population proportion, returning a difference ranging between a negative and positive decimal. For each group, states that had a higher proportion of the given race in jail compared to their population, had a negative difference between the two values. A difference close to 0, determines that the population of a race in a state is relatively proportionate to the population of that race in jail. A large positive number signifies that the proportion of a race in a state is higher than the proportion of that race in jail.
+Inequalities concerning proper representation of each race in jail are highlighted when comparing the mean of the differences for each state. This mean number represents the average difference across all states. For example, the average difference across all 50 states, as well as DC, for white people is 0.0753. This number illuminates that on average the difference between total population and incarcerated population is around 7.5% for white people, clarifying that white people are properly represented in jail, if not less represented based on population count. In contrast, the average difference for black people is -0.1751, meaning that on average 17.5% of black people are more represented in jail compared to their population. An average that is closer to 0, meaning more equal representation in population and jail, would be AAPI where the difference is (positive) 2%. Further, the average difference for Latinx and Native Americans was observed to be negative as well. This overall illustrates how significant the overrepresentation in jail of black people is throughout the United States.
 
-[TODO ... other sections ... See Canvas for details]
+### Variable 2:
+  Using the same technique and racial groups used in variable one, the differences between total population and jail population were calculated per county in every state. This was done to gain further insight into which counties in each state seemed to have the most inequalities in jail population by race. The states with the highest most negative difference for black people are Georgia (Talbot County), Missouri (St. Clair County), Mississippi (Jasper County), and North Carolina (Caswell County). The calculations for these results are inclusive of all 49 years, as an average. The differences for these four counties are all in the negative 60%, these being 65.6%, 65.5%, 64.7%, and 61.1%. Further, when examining these results for white people, the findings are similar. For example, the highest, most negative, differences for white people are 46%, 40.1%, 34.2%, and 33.3%. However, overall, it does appear that when comparing counties with the worst rates of incarceration by population count, black people are incarcerated more by around 20-30%.
 
-_All the very best with your work!_
 
+### Variable 3:
+  Total population in the United States was then filtered by year, as well as black population and white population. Total jail population was also filtered by year, including black and white jail population. Then, similar to before, proportions of total black and white people by population and total black and white people by jail population were calculated by year. These proportions allowed for examining the changes in black and white population counts each year and jail population count. The change in every count, population, and jail population, was then calculated by each year. The means of the change in black population, white population, black jail population, and white jail population for all years was then found. Theoretically, as the population for a race increase or decreases, the population of that race in jail should follow a similar trend. However, the mean of the change in black population over 49 years is 0.001798653, while the change in the incarceration of black people is 0.006853615. This demonstrates that the black population count is changing as a much slower rate than the incarceration of black people. Therefore, more black people are being incarcerated compared to their population. In contrast, the change in white population is 0.008046597, while the change in white incarceration is 0.009571108. This means that white population and white incarceration are following similar trends, being more equal. Black jail population and population count has a difference of 0.005054962, which is significantly larger than the difference of white people which is 0.001534511. This concludes that the change in black incarceration is much more extreme than white incarceration based on population.
+
+
+## Growth of the U.S. Prison Population
+```{r echo=FALSE}
+plot_jail_pop_for_us
+```
+
+*How has prison population in the U.S. changed over the last 49 years?*
+
+  The the total jail population from 1970 to 2018 has increased significantly throughout the past 49 years. While jail population remained relatively uniform from the years 1970 to 1980 at below 200,000, in the years before 2010 total jail population peaked at just below 800,000. From the years 2010-2018, jail population has decreased slightly, however; it is still extremely high, being higher than many years before.
+
+
+## Growth of Prison Population by State
+```{r echo=FALSE}
+plot_jail_pop_by_states
+```
+
+*Do certain states have higher jail populations than other states? Has this changed over the years?*
+
+  For all three states on the graph, total jail population has increased significantly throughout the 49 years. Overall, Louisiana has had the highest number of people in jail, with their growth spiking before 1980. Interestingly, jail population in Louisiana considerable grew in the early 90's and early 2000's. Presently, their jail population has remained just below 300,000, which is considerably more than Washington and Alabama's current jail populations. From roughly 1985-1998 Alabama and Washington state has similar populations in jail. However, the jail population in Alabama has since surpassed Washington.
+
+
+## Population Growth vs. Incarceration Growth
+```{r echo=FALSE}
+popjail_plot
+```
+
+  This graph overall demonstrates how the percentage of black people incarcerated in the US has consistently been higher than the percentage of black people in the total population. This means that the black population growth rate and black incarceration growth rate are not following the same trend. Black incarcerations are happening much more frequently compared to population.
+
+```{r echo=FALSE}
+popjail_plot2
+```
+
+  This graph overall demonstrates how the percentage of white people incarcerated in the US has consistently been lower than the percentage of white people in the total population. This means that the white population growth rate and white incarceration growth rate are not following the same trend. White incarcerations are happening much less frequently compared to population.
+
+*What is the difference between white population growth and incarceration, and black population growth and incarceration?*
+
+  Based on these two graphs it is evident that while the white population has grown considerably over the last 49 years, they are being incarcerated at a much lower rate. In contrast, the black population is being over-incarceration compared to their population count.
+
+## Incarceration vs. Population Differences by State
+```{r echo=FALSE}
+map_plot
+```
+
+*What states have the highest percentage of incarcerate black people compared to population?*
+
+  The states on this map that are a darker red have a higher percentage of a difference between black population and black incarceration in that state. This means that the darker states overall have a higher percentage of black people incarcerated, than black people in their population. Louisiana, Illinois, Virginia, and North Carolina are most noticeably the darkest states.
